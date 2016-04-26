@@ -135,13 +135,10 @@ bool checkRemoveBack(LinkedList<int> l2){
 
 }
 
-
-int main(){
+string runTests(){
 
 	LinkedList<int> l1;
 	LinkedList<int> l2;
-
-	std::cout << "Testing...\n";
 
 	if (!checkAddFront(l1)){
 		std::cout << "Error in add front.\n";
@@ -159,7 +156,15 @@ int main(){
 }
 
 
+int main(){
 
+	std::cout << "Testing...\n";
+	std::cout << runTests();
+
+}
+
+
+// make a RunTests class
 
 
 
