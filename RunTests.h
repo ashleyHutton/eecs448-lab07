@@ -10,7 +10,7 @@
 
 #include <iostream>
 
-class LinkedList
+class RunTests
 {
 	public:
 	/** @pre None.
@@ -50,9 +50,21 @@ class LinkedList
 
 	/** @pre the value is a valid T.
 	*   @post none.
-	*   @return true if search returns true on value in list.
+	*   @return true if search returns true on value in list in middle
 	*/	
-	bool checkSearchOnNonEmptyExists() const;
+	bool checkSearchOnNonEmptyExistsMiddle() const;
+
+	/** @pre the value is a valid T.
+	*   @post none.
+	*   @return true if search returns true on value in list at bac
+	*/	
+	bool checkSearchOnNonEmptyExistsBack() const;
+
+	/** @pre the value is a valid T.
+	*   @post none.
+	*   @return true if search returns true on value in list at front
+	*/	
+	bool checkSearchOnNonEmptyExistsFront() const;
 
 	/** @pre the value is a valid T.
 	*   @post none.
@@ -60,46 +72,57 @@ class LinkedList
 	*/	
 	bool checkSearchOnNonEmptyDoesNotExist() const;
 
-
-
-	// I'M HERE! //
-	//
-	//
-	
+	/** @pre the value is a valid T.
+	*   @post One new element added to the end of the list.
+	*   @return true if size increments and value exists
+	*/	
+	bool checkAddBackOnEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the end of the list.
-	*   @return none.
+	*   @return true if size incrememnts and value exists
 	*/	
-	void checkAddBackOnEmpty(T value);
-
-	/** @pre the value is a valid T.
-	*   @post One new element added to the end of the list.
-	*   @return none.
-	*/	
-	void checkAddBackOnNonEmpty(T value);
+	bool checkAddBackOnNonEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the front of the list.
-	*   @return none.
+	*   @return true if size increments and value exists
 	*/	
-	void addFront(T value);
+	bool checkAddFrontOnEmpty();
+
+	/** @pre the value is a valid T.
+	*   @post One new element added to the front of the list.
+	*   @return true if size increments and value exists
+	*/	
+	bool checkAddFrontOnNonEmpty();
 
 	/** @pre None
 	*   @post One element is removed from the back of the list.
-	*   @return true if the back element was removed, false if the list is empty.
+	*   @return true if size decrements and value is removed
 	*/	
-	bool removeBack();	
+	bool checkRemoveBackOnEmpty();	
+
+	/** @pre None
+	*   @post One element is removed from the back of the list.
+	*   @return true if size decrements and value is removed
+	*/	
+	bool checkRemoveBackOnNonEmpty();	
 
 	/** @pre None
 	*   @post One element is removed from the front of the list.
-	*   @return true if the front element was removed, false if the list is empty.
+	*   @return true if size decrements and value is removed
 	*/	
-	bool removeFront();
+	bool checkRemoveFrontOnEmpty();
+
+	/** @pre None
+	*   @post One element is removed from the front of the list.
+	*   @return true if size decrements and value is removed
+	*/	
+	bool checkRemoveFrontOnNonEmpty();
 
 };
 
-#include "LinkedList.cpp"
+#include "RunTests.cpp"
 
 #endif
 
