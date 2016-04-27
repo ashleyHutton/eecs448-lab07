@@ -22,103 +22,107 @@ class RunTests
 	*   @post None.
 	*   @return true if the list is empty, false otherwise.
 	*/	
-	bool checkIsEmptyOnEmpty() const;
+	void checkIsEmptyOnEmpty();
 
 	/** @pre None.
 	*   @post None.
 	*   @return true if the list is not empty, false otherwise.
 	*/	
-	bool checkIsEmptyOnNonEmpty() const;
+	void checkIsEmptyOnNonEmpty();
 
 	/** @pre None.
 	*   @post None.
 	*   @return true if 0
 	*/	
-	bool checkSizeOnEmpty() const;
+	void checkSizeOnEmpty();
 
 		/** @pre None.
 	*   @post None.
 	*   @return true if size matches number in list.
 	*/	
-	bool checkSizeOnNonEmpty() const;
+	void checkSizeOnNonEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post none.
 	*   @return true if search returns false.
 	*/	
-	bool checkSearchOnEmpty() const;
+	void checkSearchOnEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post none.
 	*   @return true if search returns true on value in list in middle
 	*/	
-	bool checkSearchOnNonEmptyExistsMiddle() const;
+	void checkSearchOnNonEmptyExistsMiddle();
 
 	/** @pre the value is a valid T.
 	*   @post none.
 	*   @return true if search returns true on value in list at bac
 	*/	
-	bool checkSearchOnNonEmptyExistsBack() const;
+	void checkSearchOnNonEmptyExistsBack();
 
 	/** @pre the value is a valid T.
 	*   @post none.
 	*   @return true if search returns true on value in list at front
 	*/	
-	bool checkSearchOnNonEmptyExistsFront() const;
+	void checkSearchOnNonEmptyExistsFront();
 
 	/** @pre the value is a valid T.
 	*   @post none.
 	*   @return true if search returns false
 	*/	
-	bool checkSearchOnNonEmptyDoesNotExist() const;
+	void checkSearchOnNonEmptyDoesNotExist();
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the end of the list.
 	*   @return true if size increments and value exists
 	*/	
-	bool checkAddBackOnEmpty();
+	void checkAddBackOnEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the end of the list.
 	*   @return true if size incrememnts and value exists
 	*/	
-	bool checkAddBackOnNonEmpty();
+	void checkAddBackOnNonEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the front of the list.
 	*   @return true if size increments and value exists
 	*/	
-	bool checkAddFrontOnEmpty();
+	void checkAddFrontOnEmpty();
 
 	/** @pre the value is a valid T.
 	*   @post One new element added to the front of the list.
 	*   @return true if size increments and value exists
 	*/	
-	bool checkAddFrontOnNonEmpty();
+	void checkAddFrontOnNonEmpty();
 
 	/** @pre None
 	*   @post One element is removed from the back of the list.
 	*   @return true if size decrements and value is removed
 	*/	
-	bool checkRemoveBackOnEmpty();	
+	void checkRemoveBackOnEmpty();	
 
 	/** @pre None
 	*   @post One element is removed from the back of the list.
 	*   @return true if size decrements and value is removed
 	*/	
-	bool checkRemoveBackOnNonEmpty();	
+	void checkRemoveBackOnNonEmpty();	
 
 	/** @pre None
 	*   @post One element is removed from the front of the list.
 	*   @return true if size decrements and value is removed
 	*/	
-	bool checkRemoveFrontOnEmpty();
+	void checkRemoveFrontOnEmpty();
 
 	/** @pre None
 	*   @post One element is removed from the front of the list.
 	*   @return true if size decrements and value is removed
 	*/	
-	bool checkRemoveFrontOnNonEmpty();
+	void checkRemoveFrontOnNonEmpty();
+
+	private:
+	void passed();
+	void failed();
 
 };
 

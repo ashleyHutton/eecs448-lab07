@@ -6,211 +6,345 @@
 
 RunTests::RunTests(){
 
+	std::cout << "\nTest isEmpty()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std::cout << "Check is empty on empty list";
+	checkIsEmptyOnEmpty();
+
+	std::cout << "Check is empty on non empty";
+	checkIsEmptyOnNonEmpty();
+
+	std::cout << "\nTest size()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std:: cout << "Check size on empty";
+	checkSizeOnEmpty();
+
+	std:: cout << "Check is size on non empty";
+	checkSizeOnNonEmpty();
+
+	std::cout << "\nTest search()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std:: cout << "Check search on empty";
+	checkSearchOnEmpty();
+
+	std:: cout << "Check search in back on non empty";
+	checkSearchOnNonEmptyExistsBack();
+
+	std:: cout << "Check search in front on non empty";
+	checkSearchOnNonEmptyExistsFront();
+
+	std:: cout << "Check search in middle on non empty";
+	checkSearchOnNonEmptyExistsMiddle();
+
+	std:: cout << "Check search on non empty when value doesn't exist";
+	checkSearchOnNonEmptyDoesNotExist();
+
+	std::cout << "\nTest addBack()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std:: cout << "Check add back on empty list";
+	checkAddBackOnEmpty();
+
+	std:: cout << "Check add back on non empty list";
+	checkAddBackOnNonEmpty();
+
+	std::cout << "\nTest addFront()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std:: cout << "Check add front on empty list";
+	checkAddFrontOnEmpty();
+
+	std:: cout << "Check add front on non empty list";
+	checkAddFrontOnNonEmpty();
+
+	std::cout << "\nTest removeBack()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std:: cout << "Check remove back on empty list";
+	checkRemoveBackOnEmpty();
+
+	std:: cout << "Check remove back on non empty list";
+	checkRemoveBackOnNonEmpty();
+
+	std::cout << "\nTest removeFront()";
+	std::cout << "\n----------------------------------------------------\n";
+
+	std:: cout << "Check remove front on empty list";
+	checkRemoveFrontOnEmpty();
+
+	std:: cout << "Check remove front on non empty list";
+	checkRemoveFrontOnNonEmpty();
+
 }
 
-bool RunTests::checkIsEmptyOnEmpty() const{
+void RunTests::checkIsEmptyOnEmpty(){
 
 	LinkedList<int> l1;
-	return l1.isEmpty();
+
+	if (l1.isEmpty() == l1.toVector().empty()){ passed(); }
+	else { 
+		failed();
+		std::cout << "Expected Size: 0\nActual Size: " + l1.toVector().size() + "\n\n";
+	}
 }
 
-bool RunTests::checkIsEmptyOnNonEmpty() const{
+void RunTests::checkIsEmptyOnNonEmpty(){
 
 	LinkedList<int> l1;
 	l1.addFront(1);
 
-	return !l1.isEmpty();
+	LinkedList<int> l2;
+	l2.toVector().insert(l2.toVector().begin(),1);
+
+	if (l1.isEmpty() == l1.toVector().empty()){ passed(); }
+	else { failed(); }
 }
 
-bool RunTests::checkSizeOnEmpty() const{
+void RunTests::checkSizeOnEmpty(){
 
 	LinkedList<int> l1;
-	return l1.size() == 0;
+	
+	if (l1.size() == l1.toVector().size()){ passed(); }
+	else { failed(); }
 }
 
-bool RunTests::checkSizeOnNonEmpty() const{
+void RunTests::checkSizeOnNonEmpty(){
 
 	LinkedList<int> l1;
-
+	LinkedList<int> l2;
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
+		l2.toVector().insert(l2.toVector().begin(),i);
 	}
 
-	return l1.size() == 5;
+	if (l1.size() == l1.toVector().size()){ passed(); }
+	else { failed(); }
 }
 
-bool RunTests::checkSearchOnEmpty() const{
+void RunTests::checkSearchOnEmpty(){
+
+	int valueToSearch = 1;
 
 	LinkedList<int> l1;
 
-	return !l1.search(1);
+	if (!(l1.search(valueToSearch) == valueToSearch)) { passed(); }
+	else { failed(); }
 }
 	
-bool RunTests::checkSearchOnNonEmptyExistsFront() const{
+void RunTests::checkSearchOnNonEmptyExistsFront(){
+
+	int valueToSearch = 4;
 
 	LinkedList<int> l1;
-
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
 	}
 
-	return l1.search(4);
+	if (l1.search(valueToSearch)) { passed(); }
+	else { failed(); }
 }
 
-bool RunTests::checkSearchOnNonEmptyExistsBack() const{
+void RunTests::checkSearchOnNonEmptyExistsBack(){
+
+	int valueToSearch = 0;
 
 	LinkedList<int> l1;
-
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
 	}
 
-	return l1.search(0);
+	if (l1.search(valueToSearch)) { passed(); }
+	else { failed(); }
 }
 
-bool RunTests::checkSearchOnNonEmptyExistsMiddle() const{
+void RunTests::checkSearchOnNonEmptyExistsMiddle(){
+
+	int valueToSearch = 3;
 
 	LinkedList<int> l1;
-
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
 	}
 
-	return l1.search(3);
+	if (l1.search(valueToSearch)) { passed(); }
+	else { failed(); }
 }
 
-bool RunTests::checkSearchOnNonEmptyDoesNotExist() const{
+void RunTests::checkSearchOnNonEmptyDoesNotExist(){
+
+	int valueToSearch = 12;
 
 	LinkedList<int> l1;
-
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
 	}
 
-	return !l1.search(12);
+	if (!l1.search(valueToSearch)) { passed(); }
+	else { failed(); }
 
 }
 	
-bool RunTests::checkAddBackOnEmpty(){
+void RunTests::checkAddBackOnEmpty(){
 
 	LinkedList<int> l1;
-
+	LinkedList<int> l2;
 	for (int i=0; i<5; i++){
 		l1.addBack(i);
+		l2.toVector().push_back(i);
 	}
 
-	//std::cout << l1.toVector().back();
-
-	return l1.toVector().back() == 4;
-
-}
-
-bool RunTests::checkAddBackOnNonEmpty(){
-
-	LinkedList<int> l1;
-
-	for (int i=0; i<5; i++){
-		l1.addFront(i);
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed();
+			return;
+		}
 	}
-
-	l1.addBack(10);
-	return l1.toVector().back() == 10;
-}
-	
-bool RunTests::checkAddFrontOnEmpty(){
-
-	LinkedList<int> l1;
-
-	for (int i=0; i<5; i++){
-		l1.addFront(i);
-	}
-
-	//std::cout << l1.toVector().front();
-
-	return l1.toVector().front() == 4;
+	passed();
 }
 
-bool RunTests::checkAddFrontOnNonEmpty(){
+void RunTests::checkAddBackOnNonEmpty(){
 
-	//use vector to push values instead?
+	// do I really need this...?
 
 	LinkedList<int> l1;
-
+	LinkedList<int> l2;
 	for (int i=0; i<5; i++){
 		l1.addBack(i);
+		l2.toVector().push_back(i);
 	}
 
-	l1.addFront(10);
-	return l1.toVector().front() == 10;
-
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed(); 
+		}
+	}
+	passed();
 }
-
-bool RunTests::checkRemoveBackOnEmpty(){
+	
+void RunTests::checkAddFrontOnEmpty(){
 
 	LinkedList<int> l1;
+	LinkedList<int> l2;
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+		l2.toVector().insert(l2.toVector().begin(),i);
+	}
 
-	int prevSize = l1.size();
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed();
+			return;
+		}
+	}
+	passed();
+}
+
+void RunTests::checkAddFrontOnNonEmpty(){
+
+	// do i really need this?
+
+	LinkedList<int> l1;
+	LinkedList<int> l2;
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+		l2.toVector().insert(l2.toVector().begin(),i);
+	}
+
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed(); 
+			return;
+		}
+	}
+	passed();
+}
+
+void RunTests::checkRemoveBackOnEmpty(){
+
+	LinkedList<int> l1;
+	LinkedList<int> l2;
 
 	l1.removeBack();
+	l2.toVector().pop_back();
 
-	return prevSize == l1.size();
-
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed(); 
+			return;
+		}
+	}
+	passed();
 }	
 
-bool RunTests::checkRemoveBackOnNonEmpty(){
+void RunTests::checkRemoveBackOnNonEmpty(){
 
 	LinkedList<int> l1;
+	LinkedList<int> l2;
 
 	for (int i=0; i<5; i++){
-		l1.addFront(i);
+		l1.addBack(i);
+		l2.toVector().push_back(i);
 	}
-	
-	int tempSize = l1.toVector().size();
-	int tempBack = l1.toVector().back();
-	int newBack = l1.toVector().at(tempSize-2);
-
-	std::cout << tempSize << "\n";
-	std::cout << tempBack << "\n";
-	std::cout << newBack << "\n";
 
 	l1.removeBack();
-	if ((tempSize > l1.toVector().size()) && (tempBack != l1.toVector().back()) && (newBack == l1.toVector().back())){
-		return true;
-	}
-	else { return false; }
+	l2.toVector().pop_back();
 
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed(); 
+			return;
+		}
+	}
+	passed();
 }
 
-bool RunTests::checkRemoveFrontOnEmpty(){
+void RunTests::checkRemoveFrontOnEmpty(){
 
 	LinkedList<int> l1;
-
-	int prevSize = l1.size();
-
-	l1.removeBack();
-
-	return prevSize == l1.size();
-}
-
-bool RunTests::checkRemoveFrontOnNonEmpty(){
-
-	LinkedList<int> l1;
-
-	for (int i=0; i<5; i++){
-		l1.addFront(i);
-	}
-	
-	int tempSize = l1.toVector().size();
-	int tempFront = l1.toVector().front();
-	int newFront = l1.toVector().at(1);
-
-	std::cout << tempSize << "\n";
-	std::cout << tempFront << "\n";
-	std::cout << newFront << "\n";
+	LinkedList<int> l2;
 
 	l1.removeFront();
-	if ((tempSize > l1.toVector().size()) && (tempFront != l1.toVector().front()) && (newFront == l1.toVector().front())){
-		return true;
+	l2.toVector().pop_back();
+
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed(); 
+			return;
+		}
 	}
-	else { return false; }
+	passed();
+}
+
+void RunTests::checkRemoveFrontOnNonEmpty(){
+
+	LinkedList<int> l1;
+	LinkedList<int> l2;
+
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+		if (i != 0){
+			l2.toVector().insert(l2.toVector().begin(),i);
+		}
+	}
+
+	l1.removeFront();
+
+	for (int j=0; j<l2.toVector().size(); j++){
+		if (l1.toVector().at(j) != l2.toVector().at(j)){ 
+			failed(); 
+			return;
+		}
+	}
+	passed();
+}
+
+void RunTests::passed(){
+	std::cout << " [PASSED]\n";
+}
+
+void RunTests::failed(){
+	std::cout << " [FAILED]\n";
 }
