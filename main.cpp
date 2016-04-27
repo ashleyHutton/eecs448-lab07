@@ -23,7 +23,7 @@ int main(){
 	if (tester.checkIsEmptyOnNonEmpty()) { std::cout << "Check is empty on non empty: PASSED\n"; }
 	else { std:: cout << "Check is empty on non empty: FAILED\n"; }
 
-	if (tester.checkSizeOnEmpty()) { std::cout << "Check is size on empty: PASSED\n"; }
+	if (tester.checkSizeOnEmpty()) { std::cout << "Check size on empty: PASSED\n"; }
 	else { std:: cout << "Check size on empty: FAILED\n"; }
 
 	if (tester.checkSizeOnNonEmpty()) { std::cout << "Check size on non empty: PASSED\n"; }
@@ -43,6 +43,30 @@ int main(){
 
 	if (tester.checkSearchOnNonEmptyDoesNotExist()) { std::cout << "Check search on non empty when value doesn't exist: PASSED\n"; }
 	else { std:: cout << "Check search on non empty when value doesn't exist: FAILED\n"; }
+
+	if (tester.checkAddBackOnEmpty()) { std::cout << "Check add back on empty list: PASSED\n"; }
+	else { std:: cout << "Check add back on empty list: FAILED\n"; }
+
+	if (tester.checkAddBackOnNonEmpty()) { std::cout << "Check add back on non empty list: PASSED\n"; }
+	else { std:: cout << "Check add back on non empty list: FAILED\n"; }
+
+	if (tester.checkAddFrontOnEmpty()) { std::cout << "Check add front on empty list: PASSED\n"; }
+	else { std:: cout << "Check add front on empty list: FAILED\n"; }
+
+	if (tester.checkAddFrontOnNonEmpty()) { std::cout << "Check add front on non empty list: PASSED\n"; }
+	else { std:: cout << "Check add front on non empty list: FAILED\n"; }
+
+	if (tester.checkRemoveBackOnEmpty()) { std::cout << "Check remove back on empty list: PASSED\n"; }
+	else { std:: cout << "Check remove back on empty list: FAILED\n"; }
+
+	if (tester.checkRemoveBackOnNonEmpty()) { std::cout << "Check remove back on non empty list: PASSED\n"; }
+	else { std:: cout << "Check remove back on non empty list: FAILED\n"; }
+
+	if (tester.checkRemoveFrontOnEmpty()) { std::cout << "Check remove front on empty list: PASSED\n"; }
+	else { std:: cout << "Check remove front on empty list: FAILED\n"; }
+
+	if (tester.checkRemoveFrontOnNonEmpty()) { std::cout << "Check remove front on non empty list: PASSED\n"; }
+	else { std:: cout << "Check remove front on non empty list: FAILED\n"; }
 
 }
 

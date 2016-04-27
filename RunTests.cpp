@@ -93,37 +93,124 @@ bool RunTests::checkSearchOnNonEmptyDoesNotExist() const{
 	
 bool RunTests::checkAddBackOnEmpty(){
 
-	// use vector here??
-	return true;
+	LinkedList<int> l1;
+
+	for (int i=0; i<5; i++){
+		l1.addBack(i);
+	}
+
+	//std::cout << l1.toVector().back();
+
+	return l1.toVector().back() == 4;
 
 }
-	
+
 bool RunTests::checkAddBackOnNonEmpty(){
 
-return true;
+	LinkedList<int> l1;
+
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+	}
+
+	l1.addBack(10);
+	return l1.toVector().back() == 10;
 }
 	
 bool RunTests::checkAddFrontOnEmpty(){
-return true;
+
+	LinkedList<int> l1;
+
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+	}
+
+	//std::cout << l1.toVector().front();
+
+	return l1.toVector().front() == 4;
+}
+
+bool RunTests::checkAddFrontOnNonEmpty(){
+
+	//use vector to push values instead?
+
+	LinkedList<int> l1;
+
+	for (int i=0; i<5; i++){
+		l1.addBack(i);
+	}
+
+	l1.addFront(10);
+	return l1.toVector().front() == 10;
 
 }
 
 bool RunTests::checkRemoveBackOnEmpty(){
-return true;
+
+	LinkedList<int> l1;
+
+	int prevSize = l1.size();
+
+	l1.removeBack();
+
+	return prevSize == l1.size();
 
 }	
 
 bool RunTests::checkRemoveBackOnNonEmpty(){
-return true;
+
+	LinkedList<int> l1;
+
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+	}
+	
+	int tempSize = l1.toVector().size();
+	int tempBack = l1.toVector().back();
+	int newBack = l1.toVector().at(tempSize-2);
+
+	std::cout << tempSize << "\n";
+	std::cout << tempBack << "\n";
+	std::cout << newBack << "\n";
+
+	l1.removeBack();
+	if ((tempSize > l1.toVector().size()) && (tempBack != l1.toVector().back()) && (newBack == l1.toVector().back())){
+		return true;
+	}
+	else { return false; }
 
 }
 
 bool RunTests::checkRemoveFrontOnEmpty(){
 
-return true;
+	LinkedList<int> l1;
+
+	int prevSize = l1.size();
+
+	l1.removeBack();
+
+	return prevSize == l1.size();
 }
 
 bool RunTests::checkRemoveFrontOnNonEmpty(){
 
-return true;
+	LinkedList<int> l1;
+
+	for (int i=0; i<5; i++){
+		l1.addFront(i);
+	}
+	
+	int tempSize = l1.toVector().size();
+	int tempFront = l1.toVector().front();
+	int newFront = l1.toVector().at(1);
+
+	std::cout << tempSize << "\n";
+	std::cout << tempFront << "\n";
+	std::cout << newFront << "\n";
+
+	l1.removeFront();
+	if ((tempSize > l1.toVector().size()) && (tempFront != l1.toVector().front()) && (newFront == l1.toVector().front())){
+		return true;
+	}
+	else { return false; }
 }
