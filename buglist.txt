@@ -1,0 +1,11 @@
+Ashley Hutton
+EECS 448
+Lab 07
+
+
+BUGS:
+1) Size always returns 1 + the expected size (i.e returns 1 on an empty list)
+2) addBack always adds the value of the front node
+3) removeFront removes the back node
+4) isEmpty returns true on an empty list
+

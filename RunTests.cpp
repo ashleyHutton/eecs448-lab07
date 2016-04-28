@@ -121,7 +121,7 @@ void RunTests::checkSearchOnEmpty(){
 
 	if (!(l1.search(valueToSearch) == valueToSearch)) { passed(); }
 	else { failed(); }
-	std::cout << "Expected Return: False" << "\nActual Return: True \n\n";
+	std::cout << "Expected Return: False" << "\nActual Return: False \n\n";
 }
 	
 void RunTests::checkSearchOnNonEmptyExistsFront(){
@@ -136,7 +136,7 @@ void RunTests::checkSearchOnNonEmptyExistsFront(){
 
 	if (l1.search(valueToSearch)) { passed(); }
 	else { failed(); }
-	std::cout << "Expected Return: True" << "\nActual Return: False \n\n";
+	std::cout << "Expected Return: True" << "\nActual Return: True \n\n";
 }
 
 void RunTests::checkSearchOnNonEmptyExistsBack(){
@@ -151,7 +151,7 @@ void RunTests::checkSearchOnNonEmptyExistsBack(){
 
 	if (l1.search(valueToSearch)) { passed(); }
 	else { failed(); }
-	std::cout << "Expected Return: True" << "\nActual Return: False \n\n";
+	std::cout << "Expected Return: True" << "\nActual Return: True \n\n";
 }
 
 void RunTests::checkSearchOnNonEmptyExistsMiddle(){
@@ -166,7 +166,7 @@ void RunTests::checkSearchOnNonEmptyExistsMiddle(){
 
 	if (l1.search(valueToSearch)) { passed(); }
 	else { failed(); }
-	std::cout << "Expected Return: True" << "\nActual Return: False \n\n";
+	std::cout << "Expected Return: True" << "\nActual Return: True \n\n";
 }
 
 void RunTests::checkSearchOnNonEmptyDoesNotExist(){
@@ -181,7 +181,7 @@ void RunTests::checkSearchOnNonEmptyDoesNotExist(){
 	if (!l1.search(valueToSearch)) { passed(); }
 	else { failed(); }
 
-	std::cout << "Expected Return: False" << "\nActual Return: True \n\n";
+	std::cout << "Expected Return: False" << "\nActual Return: False \n\n";
 
 }
 	
@@ -252,28 +252,11 @@ void RunTests::checkRemoveBackOnEmpty(){
 	std:: cout << "Check remove back on empty list";
 
 	LinkedList<int> l1;
-	std::vector<int> v1 = l1.toVector();
 
-	l1.removeBack();
-	//v1.pop_back();
+	if (!l1.removeBack()) { passed(); }
+	else { failed(); }
 
-	for (int j=0; j<v1.size(); j++){
-		if (l1.toVector().at(j) != v1.at(j)){ 
-			failed(); 
-			return;
-		}
-	}
-	passed();
-
-	std::cout << "Expected List: ";
-	for (int k=0; k<v1.size(); k++){
-		std::cout << v1.at(k) << " ";
-	}
-	std::cout << "\nActual List: ";
-	for (int k=0; k<l1.toVector().size(); k++){
-		std::cout << l1.toVector().at(k) << " ";
-	}
-	std::cout << "\n\n";
+	std::cout << "Expected Return: 0 \nActual Return: " << l1.removeBack() << "\n\n";
 }	
 
 void RunTests::checkRemoveBackOnNonEmpty(){
@@ -285,8 +268,8 @@ void RunTests::checkRemoveBackOnNonEmpty(){
 	bool isFailed = false;
 
 	for (int i=0; i<5; i++){
-		l1.addBack(i);
-		v1.push_back(i);
+		l1.addFront(i);
+		v1.insert(v1.begin(),i);
 	}
 
 	l1.removeBack();
@@ -318,28 +301,11 @@ void RunTests::checkRemoveFrontOnEmpty(){
 	std:: cout << "Check remove front on empty list";
 
 	LinkedList<int> l1;
-	std::vector<int> v1 = l1.toVector();
 
-	l1.removeFront();
-	//v1.pop_back();
+	if (!l1.removeFront()) { passed(); }
+	else { failed(); }
 
-	for (int j=0; j<v1.size(); j++){
-		if (l1.toVector().at(j) != v1.at(j)){ 
-			failed(); 
-			return;
-		}
-	}
-	passed();
-
-	std::cout << "Expected List: ";
-	for (int k=0; k<v1.size(); k++){
-		std::cout << v1.at(k) << " ";
-	}
-	std::cout << "\nActual List: ";
-	for (int k=0; k<l1.toVector().size(); k++){
-		std::cout << l1.toVector().at(k) << " ";
-	}
-	std::cout << "\n\n";
+	std::cout << "Expected Return: 0 \nActual Return: " << l1.removeFront() << "\n\n";
 }
 
 void RunTests::checkRemoveFrontOnNonEmpty(){
@@ -348,10 +314,10 @@ void RunTests::checkRemoveFrontOnNonEmpty(){
 
 	LinkedList<int> l1;
 	std::vector<int> v1 = l1.toVector();
-
+	bool isFailed = false;
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
-		if (i != 0){
+		if (i != 4){
 			v1.insert(v1.begin(),i);
 		}
 	}
@@ -360,11 +326,12 @@ void RunTests::checkRemoveFrontOnNonEmpty(){
 
 	for (int j=0; j<v1.size(); j++){
 		if (l1.toVector().at(j) != v1.at(j)){ 
-			failed(); 
-			return;
+			isFailed = true;
+			break;
 		}
 	}
-	passed();
+	if (isFailed) { failed(); }
+	else { passed(); }
 
 	std::cout << "Expected List: ";
 	for (int k=0; k<v1.size(); k++){
@@ -414,14 +381,16 @@ void RunTests::checkAddBackAddFront(){
 
 void RunTests::checkRemoveBackRemoveFront(){
 
-	std:: cout << "Check back and remove front";
+	std:: cout << "Check remove back and remove front";
 
 	LinkedList<int> l1;
 	std::vector<int> v1 = l1.toVector();
-
+	bool isFailed = false;
 	for (int i=0; i<5; i++){
 		l1.addFront(i);
-		v1.insert(v1.begin(),i);
+		if (i != 4){
+			v1.insert(v1.begin(),i);
+		}
 	}
 
 	l1.removeFront();
@@ -430,11 +399,12 @@ void RunTests::checkRemoveBackRemoveFront(){
 
 	for (int j=0; j<v1.size(); j++){
 		if (l1.toVector().at(j) != v1.at(j)){ 
-			failed(); 
-			return;
+			isFailed = true;
+			break;
 		}
 	}
-	passed();
+	if (isFailed) { failed(); }
+	else { passed(); }
 
 	std::cout << "Expected List: ";
 	for (int k=0; k<v1.size(); k++){
