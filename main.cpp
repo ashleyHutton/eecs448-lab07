@@ -7,7 +7,7 @@
 /*
 	BUGS:
 	1) List starts with size = 1 instead of size = 0
-	2) Cannot add back with negative numbers...?
+	2) Add back always adds 0
 
 */
 

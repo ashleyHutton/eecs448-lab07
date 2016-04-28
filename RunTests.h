@@ -90,12 +90,6 @@ class RunTests
 	*/	
 	void checkAddFrontOnEmpty();
 
-	/** @pre the value is a valid T.
-	*   @post One new element added to the front of the list.
-	*   @return true if size increments and value exists
-	*/	
-	void checkAddFrontOnNonEmpty();
-
 	/** @pre None
 	*   @post One element is removed from the back of the list.
 	*   @return true if size decrements and value is removed
@@ -120,9 +114,22 @@ class RunTests
 	*/	
 	void checkRemoveFrontOnNonEmpty();
 
+	/** @pre None
+	*   @post One element is removed from the front of the list.
+	*   @return true if elements are in correct order
+	*/	
+	void checkAddBackAddFront();
+
+	/** @pre None
+	*   @post One element is removed from the front of the list.
+	*   @return true if elements are removed correctly
+	*/	
+	void checkRemoveBackRemoveFront();
+
 	private:
 	void passed();
 	void failed();
+	void printList(LinkedList<int>, LinkedList<int>);
 
 };
 
